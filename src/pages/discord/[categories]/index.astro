@@ -33,6 +33,7 @@ const response = await getDiscordPosts();
         <!-- <p class="discord__labocategory">カテゴリー:{categories}</p> -->
         <div class="discord-posts">
           {
+            /*投稿記事ごとの繰り返し処理 */
             response.contents.map(
               (detailPost: any) =>
                 //選択したカテゴリと一致する記事のみ表示する

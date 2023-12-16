@@ -1,12 +1,87 @@
 ---
-import "../../css/grobal.scss"
+import "../../css/discordlabo.scss";
 import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import { getCategorys, getDiscordPosts } from "../../libs/microcms";
+
+//microCMSのカテゴリー情報を取得する
+const category_microcms = await getCategorys();
+//microCMSのPOST情報を取得する
+const response = await getDiscordPosts();
 ---
+
 <Layout title="1989.">
   <main>
-    <div class="category-block">
-      <!-- <a href="/discord/discord_labo" class="category-block__item">discord-bot 導入実績</a> -->
-      <a href="/discord/discord_labo" class="category-block__item">discord labo</a>
+    <div class="wrapper">
+      <!-- コンテンツ一覧リスト（サイトメニュー） -->
+      <aside class="contents-block">
+        <ul class="contents-block__lists">
+          {
+            /*カテゴリごとに繰り返し*/
+            category_microcms.contents.map((category: any) => (
+              <li class="contents-block__list">
+                <a href={"discord" + "/" + category.id} class="focus contents-block__category">
+                  {category.category}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+      <!-- 投稿記事エリア -->
+      <article class="discord-block">
+        <!-- <h2 class="discord-title">Discord Labo</h2> -->
+        <!-- <p class="discord__labocategory">カテゴリー:{categories}</p> -->
+        <div class="discord-posts">
+          {
+            /*投稿記事ごとの繰り返し処理 */
+            response.contents.map(
+              (detailPost: any) =>
+
+                  <a href={detailPost.category.id + "/" + detailPost.id} class="post">
+                    <img
+                      src={detailPost.thumbnail.url}
+                      alt=""
+                      class="post-img"
+                    />
+                    <div class="post__detail">
+                      <h3 class="post__title">{detailPost.title}</h3>
+                      <div class="post__time">
+                        <p class="post__createtime">
+                          {detailPost.createdAt.substring(0, 10)} 作成
+                        </p>
+                        <p class="post__updatetime">
+                          {detailPost.updatedAt.substring(0, 10)} 更新
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+
+                // //選択したカテゴリと一致する記事のみ表示する
+                // detailPost.category.id === categories && (
+                //   <a href={categories + "/" + detailPost.id} class="post">
+                //     <img
+                //       src={detailPost.thumbnail.url}
+                //       alt=""
+                //       class="post-img"
+                //     />
+                //     <div class="post__detail">
+                //       <h3 class="post__title">{detailPost.title}</h3>
+                //       <div class="post__time">
+                //         <p class="post__createtime">
+                //           {detailPost.createdAt.substring(0, 10)} 作成
+                //         </p>
+                //         <p class="post__updatetime">
+                //           {detailPost.updatedAt.substring(0, 10)} 更新
+                //         </p>
+                //       </div>
+                //     </div>
+                //   </a>
+                // )
+            )
+          }
+        </div>
+      </article>
     </div>
   </main>
 </Layout>
