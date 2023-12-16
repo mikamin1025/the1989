@@ -1,0 +1,65 @@
+---
+import "../../../css/discordlabo.scss";
+import Layout from "../../../layouts/Layout.astro";
+import Nav from "../../../components/Nav.astro";
+import { getCategorys, getDiscordPosts } from "../../../libs/microcms";
+
+
+export async function getStaticPaths() {
+  const categories = await getCategorys();
+  return categories.contents.map((category: any) => ({
+    params: {
+      categories: category.id,
+    },
+  }));
+}
+
+//IDを取得する（URL）
+const { categories } = Astro.params;
+//microCMSのカテゴリー情報を取得する
+const category_microcms = await getCategorys();
+//microCMSのPOST情報を取得する
+const response = await getDiscordPosts();
+---
+
+<Layout title="1989.">
+  <main>
+    <div class="wrapper">
+      <!-- コンテンツ一覧リスト（サイトメニュー） -->
+      <Nav categories={categories}, category_microcms={category_microcms}, response={response}/>
+      <!-- 投稿記事エリア -->
+      <article class="discord-block">
+        <!-- <h2 class="discord-title">Discord Labo</h2> -->
+        <!-- <p class="discord__labocategory">カテゴリー:{categories}</p> -->
+        <div class="discord-posts">
+          {
+            response.contents.map(
+              (detailPost: any) =>
+                //選択したカテゴリと一致する記事のみ表示する
+                detailPost.category.id === categories && (
+                  <a href={categories + "/" + detailPost.id} class="post">
+                    <img
+                      src={detailPost.thumbnail.url}
+                      alt=""
+                      class="post-img"
+                    />
+                    <div class="post__detail">
+                      <h3 class="post__title">{detailPost.title}</h3>
+                      <div class="post__time">
+                        <p class="post__createtime">
+                          {detailPost.createdAt.substring(0, 10)} 作成
+                        </p>
+                        <p class="post__updatetime">
+                          {detailPost.updatedAt.substring(0, 10)} 更新
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                )
+            )
+          }
+        </div>
+      </article>
+    </div>
+  </main>
+</Layout>

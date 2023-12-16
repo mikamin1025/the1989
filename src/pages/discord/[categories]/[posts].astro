@@ -1,0 +1,40 @@
+---
+import "../../../css/discordPostDetail.scss";
+import Layout from "../../../layouts/Layout.astro";
+import { getDiscordPosts, getDiscordPostDetail } from "../../../libs/microcms";
+
+export async function getStaticPaths() {
+  const discordPosts = await getDiscordPosts();
+  return discordPosts.contents.map((post: any) => ({
+    params: {
+      categories: post.category.id,
+      posts: post.id,
+    },
+  }));
+}
+
+//URLの投稿記事IDを取得する
+const { categories ,posts } = Astro.params;
+//記事内容を取得する
+const post = await getDiscordPostDetail(posts as string);
+---
+
+<Layout title="1989.">
+  <main>
+    <div class="content">
+      <a class="content__back" href={"../" + categories}>◀ BACK</a>
+      <img class="contetnt__thumbnail" src={post.thumbnail.url} alt="" />
+      <h2 class="content__title">{post.title}</h2>
+      <div class="content__time">
+        <p class="content__cleatetime">
+          投稿日 {post.createdAt.substring(0, 10)}
+        </p>
+        <p class="content__updatetime">
+          更新日 {post.updatedAt.substring(0, 10)}
+        </p>
+      </div>
+      <hr>
+      <div class="content__textarea" set:html={post.content} />
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,267 @@
+main {
+  width: 100%;
+  height: calc(100vh - 80px);
+  overflow: hidden;
+
+  & .wrapper {
+    display: flex;
+
+    /***********************************************
+  コンテンツ一覧リスト
+  ************************************************/
+    & .contents-block {
+      position: sticky;
+      overflow-y: scroll;
+      width: 20%;
+      height: 90vh;
+      margin-top: 30px;
+      // background-color: skyblue;
+
+      &::-webkit-scrollbar {
+        background: #555;
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #111;
+      }
+
+      & .contents-block__lists {
+        margin-top: 20px;
+        margin-left: 20px;
+        list-style: none;
+
+
+        & .contents-block__list {
+          width: 100%;
+          margin-bottom: 25px;
+          // border-radius: 5px;
+
+          & .contents-block__category {
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+            text-decoration: none;
+            color: #111;
+
+
+            &:hover {
+              color: #fff;
+              background-color: rgb(78, 128, 239);
+            }
+          }
+
+          & .focus {
+            display: block;
+            width: 100%;
+            height: 100%;
+            // padding: 5px;
+            text-decoration: none;
+            font-weight: 900;
+            background-color: rgb(78, 128, 239, 0.2);
+            // border-radius: 5px;
+
+          }
+
+          & .contents-block__posttitle {
+            display: block;
+            font-size: .8em;
+            width: 100%;
+            height: 100%;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 20px;
+            text-decoration: none;
+            color: #111;
+
+            &::before {
+              content: "- ";
+            }
+
+            &:hover {
+              color: #fff;
+              background-color: rgb(78, 128, 239);
+            }
+          }
+        }
+
+      }
+    }
+
+    /***********************************************
+  投稿記事
+  ************************************************/
+    & .discord-block {
+      width: 80%;
+      overflow-y: scroll;
+      height: 90vh;
+      margin-top: 30px;
+      margin-bottom: 100px;
+      margin-left: 20px;
+
+      & .discord-practice-text {
+        font-size: 1.8em;
+        font-weight: 700;
+        margin-bottom: 40px;
+        margin-left: 10px;
+      }
+
+      &::-webkit-scrollbar {
+        background: #555;
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #111;
+      }
+
+      & .discord-title {
+        font-size: 5em;
+        margin-bottom: 10px;
+        font-weight: 900;
+      }
+
+      & .discord__labocategory {
+        font-size: 1.8em;
+        margin-bottom: 40px;
+        margin-left: 10px;
+        font-weight: 700;
+      }
+
+      & .discord-posts {
+        display: block;
+        width: 100%;
+
+        & .post {
+          display: flex;
+          margin-bottom: 5px;
+          text-decoration: none;
+          color: #111;
+          width: 100%;
+
+          &:hover {
+            opacity: .7;
+          }
+
+          & .post-img {
+            display: block;
+            width: 35%;
+            object-fit: cover;
+            // border-radius: 10px;
+            // box-shadow: 2px 2px 4px gray;
+          }
+
+          & .post__detail {
+            display: block;
+            width: 60%;
+            margin-top: 5px;
+            margin-right: 20px;
+            margin-left: 20px;
+
+            & .post__category {
+              display: inline-block;
+              font-size: 1em;
+              margin-bottom: 5px;
+              padding: 5px 10px;
+              background-color: #222;
+              color: #fff;
+              border-radius: 4px;
+            }
+
+            & .post__title {
+              font-size: 1.8em;
+              margin-bottom: 10px;
+              font-weight: 700;
+            }
+
+            & .post__time {
+              display: flex;
+
+              & .post__createtime {
+                font-size: .8em;
+                margin-bottom: 20px;
+                margin-right: 20px;
+                margin-left: 5px;
+              }
+
+              & .post__updatetime {
+                font-size: .8em;
+                margin-bottom: 15px;
+                margin-right: 20px;
+              }
+            }
+
+
+            & .post__text {
+              font-size: 1em;
+              line-height: 1.5em;
+            }
+
+
+          }
+
+        }
+      }
+    }
+
+    .survice-mask {
+      position: absolute;
+      background-color: #f76e5e;
+      visibility: hidden;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+
+}
+
+@media (max-width: 767px) {
+  main {
+    overflow-x: hidden;
+
+    & .wrapper {
+      display: block;
+      width: 100%;
+
+      .contents-block {
+        display: none;
+      }
+
+      .discord-block {
+        width: 100%;
+        margin-top: 0;
+        margin-left: 0;
+
+
+        & .discord-posts {
+          width: 100%;
+
+          & .post {
+            width: 100%;
+            display: block;
+
+            & .post-img {
+              width: 100%;
+            }
+
+            & .post__detail {
+              width: 95%;
+              margin-left: 10px;
+
+              & .post__title {
+                font-size: 1.4em;
+                margin-bottom: 10px;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

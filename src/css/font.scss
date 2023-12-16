@@ -1,0 +1,38 @@
+/* カスタムフォントファミリーを登録し、ブラウザにその場所を知らせます。 */
+@font-face {
+  font-family: "LINESeedJP";
+  font-weight: 200;
+  src:
+    local("LINESeedJP_OTF_Th"),
+    url("../../public/fonts/LINESeedJP_OTF_Th.woff2") format("woff2"),
+    url("../../public/fonts/LINESeedJP_OTF_Th.woff") format("woff");
+}
+@font-face {
+  font-family: "LINESeedJP";
+  font-weight: 400;
+  src:
+    local("LINESeedJP_OTF_Rg"),
+    url("../../public/fonts/LINESeedJP_OTF_Rg.woff2") format("woff2"),
+    url("../../public/fonts/LINESeedJP_OTF_Rg.woff") format("woff");
+}
+@font-face {
+  font-family: "LINESeedJP";
+  font-weight: 700;
+  src:
+    local("LINESeedJP_OTF_Bd"),
+    url("../../public/fonts/LINESeedJP_OTF_Bd.woff2") format("woff2"),
+    url("../../public/fonts/LINESeedJP_OTF_Bd.woff") format("woff");
+}
+@font-face {
+  font-family: "LINESeedJP";
+  font-weight: 900;
+  src:
+    local("LINESeedJP_OTF_Eb"),
+    url("../../public/fonts/LINESeedJP_OTF_Eb.woff2") format("woff2"),
+    url("../../public/fonts/LINESeedJP_OTF_Eb.woff") format("woff");
+}
+
+
+body {
+  font-family: "LINESeedJP", serif;
+}
