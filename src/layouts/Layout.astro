@@ -30,16 +30,24 @@ const response = await getDiscordPosts();
   <body>
     <div class="overview">
       {
-        category_microcms.contents.map((category: any) =>
-        <li class="overview__category-list">
-              <a href={category.id} class="overview__category-name">{category.category}</a>
-              {
-                response.contents.map((response: any) => 
-                response.category.id === category.id &&
-                <a href={response.category.id + "/" + response.id} class="overview__posttitle">{response.title}</a>)
-              }
-            </li>
-        )
+        category_microcms.contents.map((category: any) => (
+          <li class="overview__category-list">
+            <a href={category.id} class="overview__category-name">
+              {category.category}
+            </a>
+            {response.contents.map(
+              (response: any) =>
+                response.category.id === category.id && (
+                  <a
+                    href={response.category.id + "/" + response.id}
+                    class="overview__posttitle"
+                  >
+                    {response.title}
+                  </a>
+                )
+            )}
+          </li>
+        ))
       }
     </div>
     <header class="header">
@@ -92,7 +100,10 @@ const response = await getDiscordPosts();
         height: 40px;
         border: 1px solid #111;
         border-radius: 50%;
-        
+      }
+      & .hn_action {
+        background-color: #111;
+        transition-duration:.5s
       }
     }
     .overview {
@@ -103,12 +114,12 @@ const response = await getDiscordPosts();
       opacity: 0.9;
       text-align: center;
       transform: translateX(100%);
+      
 
       & .overview__category-list {
         list-style: none;
-        margin-top: 50px;
+        margin-top: 100px;
         margin-bottom: 20px;
-
 
         & .overview__category-name {
           display: block;
@@ -125,19 +136,19 @@ const response = await getDiscordPosts();
         }
       }
     }
+    & .ov_action {
+      transform: translateX(0%);
+      transition-duration:.5s, .5s;
+    }
   }
 </style>
 <script>
-  import { gsap } from 'gsap'
-  // import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
+  
   const overview = document.querySelector(".overview");
+  const nav = document.querySelector(".header-nav");
 
-  document.querySelector('.header-nav')?.addEventListener('click',() => {
-    gsap.to(overview, {
-      duration:.5,
-      x: "0%",
-    })
+  nav?.addEventListener("click", () => {
+    nav?.classList.toggle("hn_action");
+    overview?.classList.toggle("ov_action");
   });
-
 </script>
