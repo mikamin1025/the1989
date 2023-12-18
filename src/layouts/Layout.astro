@@ -1,11 +1,16 @@
 ---
 import "../css/reset.css";
 import "../css/font.scss";
+import { getCategorys, getDiscordPosts } from "../libs/microcms";
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+//microCMSのカテゴリー情報を取得する
+const category_microcms = await getCategorys();
+//microCMSのPOST情報を取得する
+const response = await getDiscordPosts();
 ---
 
 <!doctype html>
@@ -17,12 +22,29 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css"
+    />
   </head>
   <body>
+    <div class="overview">
+      {
+        category_microcms.contents.map((category: any) =>
+        <li class="overview__category-list">
+              <a href={category.id} class="overview__category-name">{category.category}</a>
+              {
+                response.contents.map((response: any) => 
+                response.category.id === category.id &&
+                <a href={response.category.id + "/" + response.id} class="overview__posttitle">{response.title}</a>)
+              }
+            </li>
+        )
+      }
+    </div>
     <header class="header">
       <h1 class="header-title">{title}</h1>
-      
+      <nav class="header-nav"></nav>
     </header>
     <main>
       <slot />
@@ -32,21 +54,90 @@ const { title } = Astro.props;
 <style is:global>
   :root {
     color: #111;
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
   }
 
   .header {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 80px;
 
-    & h1 {
+    & .header-title {
       display: block;
       font-size: 2em;
       font-weight: 900;
       height: 80px;
       line-height: 80px;
-      margin-left: .5em;
+      margin-left: 0.5em;
+    }
+    & .header-nav {
+      /* display: none; */
+    }
+  }
+  @media (max-width: 767px) {
+    .header {
+      position: relative;
+      width: 100%;
+
+      & .header-nav {
+        display: block;
+        position: absolute;
+        right: 1em;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #111;
+        border-radius: 50%;
+        
+      }
+    }
+    .overview {
+      position: absolute;
+      width: 100vw;
+      min-height: 100vh;
+      background-color: #ddd;
+      opacity: 0.9;
+      text-align: center;
+      transform: translateX(100%);
+
+      & .overview__category-list {
+        list-style: none;
+        margin-top: 50px;
+        margin-bottom: 20px;
+
+
+        & .overview__category-name {
+          display: block;
+          color: #111;
+          font-size: 1.1em;
+          font-weight: 700;
+          text-decoration: none;
+        }
+        & .overview__posttitle {
+          display: block;
+          margin-top: 10px;
+          color: #111;
+          text-decoration: none;
+        }
+      }
     }
   }
 </style>
+<script>
+  import { gsap } from 'gsap'
+  // import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  const overview = document.querySelector(".overview");
+
+  document.querySelector('.header-nav')?.addEventListener('click',() => {
+    gsap.to(overview, {
+      duration:.5,
+      x: "0%",
+    })
+  });
+
+</script>
