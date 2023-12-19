@@ -65,15 +65,17 @@ const response = await getDiscordPosts();
     overflow-x: hidden;
   }
   body {
+    width: 100%;
     overflow-x: hidden;
   }
 
   .header {
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 80px;
+    overflow-x: hidden;
 
     & .header-title {
       display: block;
@@ -89,8 +91,9 @@ const response = await getDiscordPosts();
   }
   @media (max-width: 767px) {
     .header {
-      position: relative;
-      width: 100%;
+      /* position: relative; */
+      width: 100vw;
+      
 
       & .header-nav {
         display: block;
@@ -107,7 +110,7 @@ const response = await getDiscordPosts();
       }
     }
     .overview {
-      position: absolute;
+      position: fixed;
       width: 100vw;
       min-height: 100vh;
       background-color: #ddd;

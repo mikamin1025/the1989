@@ -44,6 +44,7 @@ main {
         margin-bottom: 20px;
         background-color: #ddd;
       }
+
       & h3 {
         font-size: 1.5em;
         line-height: 1.5em;
@@ -78,10 +79,12 @@ main {
       }
 
       & blockquote {
-        & p::before,::after {
+
+        & p::before,
+        ::after {
           content: '\201C';
         }
-        
+
       }
 
       & img {
@@ -93,7 +96,7 @@ main {
         border: 1px solid #999;
         // border-radius: 10px;
         object-fit: cover;
-        
+
       }
 
       & pre {
@@ -108,6 +111,129 @@ main {
 
         & code {
           font-family: "LINESeedJP", Consolas, Menlo, Monaco, -apple-system, BlinkMacSystemFont, "Segoe UI", Meiryo, monospace;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  main {
+    width: 100%;
+
+    & .content {
+      width: 90%;
+      margin: 20px auto;
+
+      & .content__back {
+        font-size: 0.8em;
+      }
+
+      & .contetnt__thumbnail {
+        display: block;
+        width: 100%;
+        min-height: 30vh;
+        object-fit: cover;
+        margin: 5px auto 0;
+        // border-radius: 10px;
+      }
+
+      & .content__title {
+        font-size: 1.5em;
+        // font-weight: 400;
+        margin-top: 10px;
+      }
+      & .content__time {
+        display: flex;
+        margin-top: 10px;
+        font-size: 0.8em;
+
+        & .content__cleatetime {
+          margin-right: 20px;
+        }
+      }
+      & .content__textarea {
+        margin-top: 40px;
+
+        & h2 {
+          border-left: 5px solid #111;
+          font-size: 1.2em;
+          line-height: 1.5em;
+          margin-top: 30px;
+          padding: 5px 5px 5px 15px;
+          margin-bottom: 20px;
+          background-color: #ddd;
+        }
+
+        & h3 {
+          font-size: 1.0em;
+          line-height: 1.5em;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          text-decoration: underline;
+        }
+
+        & p {
+          line-height: 1.7em;
+          font-weight: 400;
+          font-size: 0.7em;
+          margin-top: 10px;
+        }
+
+        & ul {
+          margin-top: 10px;
+
+          & li {
+            list-style-position: inside;
+            margin-bottom: 7px;
+            font-size: .7em;
+          }
+        }
+
+        & ol {
+          margin-top: 10px;
+
+          & li {
+            list-style-position: inside;
+            margin-bottom: 7px;
+            font-size: .7em;
+          }
+        }
+
+        & blockquote {
+
+          & p::before,
+          ::after {
+            content: '\201C';
+          }
+
+        }
+
+        & img {
+          // display: block;
+          // margin: 0 auto;
+          max-width: 80%;
+          height: auto;
+          margin-bottom: 30px;
+          border: 1px solid #999;
+          // border-radius: 10px;
+          object-fit: cover;
+
+        }
+
+        & pre {
+          margin: 1em 0;
+          padding: 1em;
+          border-radius: 10px;
+          background: #25292f;
+          // color: #fff; /* 文字色 */
+          // white-space: pre-wrap; /* はみ出たときに折り返す */
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+
+          & code {
+            font-family: "LINESeedJP", Consolas, Menlo, Monaco, -apple-system, BlinkMacSystemFont, "Segoe UI", Meiryo, monospace;
+          }
         }
       }
     }
