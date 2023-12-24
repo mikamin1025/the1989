@@ -19,7 +19,7 @@ const { categories ,posts } = Astro.params;
 const post = await getDiscordPostDetail(posts as string);
 ---
 
-<Layout title="1989.">
+<Layout title="1989." category_microcms={categories} response={posts} Is_nav={false} >
   <main>
     <div class="content">
       <a class="content__back" href={"../" + categories}>◀ BACK</a>

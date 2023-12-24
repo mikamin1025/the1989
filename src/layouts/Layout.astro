@@ -1,16 +1,18 @@
 ---
 import "../css/reset.css";
 import "../css/font.scss";
-import { getCategorys, getDiscordPosts } from "../libs/microcms";
+import Nav_sp from "../components/Nav_sp.astro";
 interface Props {
   title: string;
+  category_microcms?:string;
+  response?: string;
+  path?:string;
+  Is_nav: boolean;
 }
 
-const { title } = Astro.props;
-//microCMSのカテゴリー情報を取得する
-const category_microcms = await getCategorys();
-//microCMSのPOST情報を取得する
-const response = await getDiscordPosts();
+//category_microcms:カテゴリー情報のみ
+//response：投稿記事全体
+const { title, category_microcms, response, path, Is_nav } = Astro.props;
 ---
 
 <!doctype html>
@@ -30,29 +32,15 @@ const response = await getDiscordPosts();
   <body>
     <div class="overview">
       {
-        category_microcms.contents.map((category: any) => (
-          <li class="overview__category-list">
-            <a href={category.id} class="overview__category-name">
-              {category.category}
-            </a>
-            {response.contents.map(
-              (response: any) =>
-                response.category.id === category.id && (
-                  <a
-                    href={response.category.id + "/" + response.id}
-                    class="overview__posttitle"
-                  >
-                    {response.title}
-                  </a>
-                )
-            )}
-          </li>
-        ))
+        Is_nav === true && <Nav_sp category_microcms={category_microcms}, response={response}, path={path}/>
       }
     </div>
     <header class="header">
       <h1 class="header-title">{title}</h1>
-      <nav class="header-nav"></nav>
+      {
+      Is_nav ===true && <nav class="header-nav"></nav>
+      }
+
     </header>
     <main>
       <slot />
@@ -114,7 +102,7 @@ const response = await getDiscordPosts();
       width: 100vw;
       min-height: 100vh;
       background-color: #ddd;
-      opacity: 0.9;
+      /* opacity: 0.9; */
       text-align: center;
       transform: translateX(100%);
       

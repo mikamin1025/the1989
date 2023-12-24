@@ -10,7 +10,7 @@ const category_microcms = await getCategorys();
 const response = await getDiscordPosts();
 ---
 
-<Layout title="1989.">
+<Layout title="1989." category_microcms={category_microcms} response={response} path="discord/" Is_nav={true} >
   <main>
     <div class="wrapper">
       <!-- コンテンツ一覧リスト（サイトメニュー） -->
@@ -31,7 +31,7 @@ const response = await getDiscordPosts();
       <!-- 投稿記事エリア -->
       <article class="discord-block">
         <!-- <h2 class="discord-title">Discord Labo</h2> -->
-        <!-- <p class="discord__labocategory">カテゴリー:{categories}</p> -->
+        <p class="discord__labocategory">ALL</p>
         <div class="discord-posts">
           {
             /*投稿記事ごとの繰り返し処理 */

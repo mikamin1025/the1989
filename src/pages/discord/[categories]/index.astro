@@ -4,7 +4,6 @@ import Layout from "../../../layouts/Layout.astro";
 import Nav from "../../../components/Nav.astro";
 import { getCategorys, getDiscordPosts } from "../../../libs/microcms";
 
-
 export async function getStaticPaths() {
   const categories = await getCategorys();
   return categories.contents.map((category: any) => ({
@@ -15,22 +14,41 @@ export async function getStaticPaths() {
 }
 
 //IDを取得する（URL）
-const { categories } = Astro.params;
+const { categories, categoryName } = Astro.params;
 //microCMSのカテゴリー情報を取得する
 const category_microcms = await getCategorys();
 //microCMSのPOST情報を取得する
 const response = await getDiscordPosts();
 ---
 
-<Layout title="1989.">
+<Layout
+  title="1989."
+  category_microcms={category_microcms}
+  response={response}
+  path=""
+  Is_nav={true}
+>
   <main>
     <div class="wrapper">
       <!-- コンテンツ一覧リスト（サイトメニュー） -->
-      <Nav categories={categories}, category_microcms={category_microcms}, response={response}/>
+      <Nav
+        categories={categories}
+        ,
+        category_microcms={category_microcms}
+        ,
+        response={response}
+      />
       <!-- 投稿記事エリア -->
       <article class="discord-block">
         <!-- <h2 class="discord-title">Discord Labo</h2> -->
-        <!-- <p class="discord__labocategory">カテゴリー:{categories}</p> -->
+        {
+          category_microcms.contents.map(
+            (category: any) =>
+              category.id === categories && (
+                <h2 class="discord__labocategory">{"§" + category.category}</p>
+              )
+          )
+        }
         <div class="discord-posts">
           {
             /*投稿記事ごとの繰り返し処理 */

@@ -1,0 +1,28 @@
+---
+import "../css/discordlabo.scss";
+const { category_microcms, response, path} = Astro.props;
+---
+<aside class="contents-block">
+  <ul class="contents-block__lists">
+    {
+       category_microcms.contents.map((category: any) => (
+          <li class="overview__category-list">
+            <a href={path + category.id} class="overview__category-name">
+              {category.category}
+            </a>
+            {response.contents.map(
+              (response: any) =>
+                response.category.id === category.id && (
+                  <a
+                    href={response.category.id + "/" + response.id}
+                    class="overview__posttitle"
+                  >
+                    {response.title}
+                  </a>
+                )
+            )}
+          </li>
+        ))
+    }
+  </ul>
+</aside>
