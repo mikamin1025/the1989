@@ -20,7 +20,7 @@ const response = await getDiscordPosts();
             /*カテゴリごとに繰り返し*/
             category_microcms.contents.map((category: any) => (
               <li class="contents-block__list">
-                <a href={"discord" + "/" + category.id} class="focus contents-block__category">
+                <a href={"/" + category.id} class="focus contents-block__category">
                   {category.category}
                 </a>
               </li>
@@ -38,7 +38,7 @@ const response = await getDiscordPosts();
             response.contents.map(
               (detailPost: any) =>
 
-                  <a href={"discord/" + detailPost.category.id + "/" + detailPost.id} class="post">
+                  <a href={detailPost.category.id + "/" + detailPost.id} class="post">
                     <img
                       src={detailPost.thumbnail.url}
                       alt=""
