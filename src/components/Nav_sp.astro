@@ -5,6 +5,11 @@ const { category_microcms, response, path} = Astro.props;
 <aside class="contents-block">
   <ul class="contents-block__lists">
     {
+      path !== "../" ? <a href="#" class="overview__category-name">🚀ALL</a>
+      : <a href="../discord" class="overview__category-name">🚀ALL</a>
+    }
+    
+    {
        category_microcms.contents.map((category: any) => (
           <li class="overview__category-list">
             <a href={path + category.id} class="overview__category-name">
