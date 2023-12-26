@@ -14,7 +14,7 @@ const { category_microcms, response, path} = Astro.props;
               (response: any) =>
                 response.category.id === category.id && (
                   <a
-                    href={response.category.id + "/" + response.id}
+                    href={path + response.category.id + "/" + response.id}
                     class="overview__posttitle"
                   >
                     {response.title}

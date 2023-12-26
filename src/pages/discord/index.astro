@@ -38,7 +38,7 @@ const response = await getDiscordPosts();
             response.contents.map(
               (detailPost: any) =>
 
-                  <a href={detailPost.category.id + "/" + detailPost.id} class="post">
+                  <a href={"discord/" + detailPost.category.id + "/" + detailPost.id} class="post">
                     <img
                       src={detailPost.thumbnail.url}
                       alt=""
