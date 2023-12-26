@@ -25,7 +25,7 @@ const response = await getDiscordPosts();
   title="1989."
   category_microcms={category_microcms}
   response={response}
-  path=""
+  path="../"
   Is_nav={true}
 >
   <main>
@@ -56,7 +56,7 @@ const response = await getDiscordPosts();
               (detailPost: any) =>
                 //選択したカテゴリと一致する記事のみ表示する
                 detailPost.category.id === categories && (
-                  <a href={categories + "/" + detailPost.id} class="post">
+                  <a href={detailPost.id} class="post">
                     <img
                       src={detailPost.thumbnail.url}
                       alt=""
