@@ -1,5 +1,6 @@
 main {
   width: 100%;
+  margin-bottom: 20px;
 
   & .content {
     width: 50%;
@@ -34,6 +35,7 @@ main {
 
     & .content__textarea {
       margin-top: 40px;
+      margin-bottom: 40px;
 
       & h2 {
         border-left: 5px solid #111;
@@ -111,6 +113,30 @@ main {
 
         & code {
           font-family: "LINESeedJP", Consolas, Menlo, Monaco, -apple-system, BlinkMacSystemFont, "Segoe UI", Meiryo, monospace;
+        }
+      }
+    }
+    & .content__relatedLinks {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 200px;
+      // background-color: pink;
+
+      & .content__prev-Link {
+        display: block;
+        width: 45%;
+        height: 80%;
+        // background-color: skyblue;
+      }
+      & .content__next-Link {
+        display: block;
+        width: 45%;
+        height: 80%;
+        // background-color: salmon;
+
+        & img {
+          width: 100%;
         }
       }
     }

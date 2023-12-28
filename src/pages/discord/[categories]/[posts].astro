@@ -14,12 +14,17 @@ export async function getStaticPaths() {
 }
 
 //URLの投稿記事IDを取得する
-const { categories ,posts } = Astro.params;
+const { categories, posts } = Astro.params;
 //記事内容を取得する
 const post = await getDiscordPostDetail(posts as string);
 ---
 
-<Layout title="1989." category_microcms={categories} response={posts} Is_nav={false} >
+<Layout
+  title="1989."
+  category_microcms={categories}
+  response={posts}
+  Is_nav={false}
+>
   <main>
     <div class="content">
       <!-- <a class="content__back" href={"../" + categories}>◀ BACK</a> -->
@@ -34,8 +39,26 @@ const post = await getDiscordPostDetail(posts as string);
           更新日 {post.updatedAt.substring(0, 10)}
         </p>
       </div>
-      <hr>
+      <hr />
       <div class="content__textarea" set:html={post.content} />
+      <div class="content__relatedLinks">
+        <a class="content__prev-Link">
+          <p>関連記事(prev)</p>
+          {post.related_Links.prev_Link !== null && <a href="">hogehoge</a>}
+        </a>
+        <a class="content__next-Link">
+          <p>関連記事(next)</p>
+          {
+            post.related_Links.next_Link !== null && (
+              <img
+                class="content__next-Link-thumbnail"
+                src={post.related_Links.next_Link.thumbnail.url}
+                alt=""
+              />
+            )
+          }
+        </a>
+      </div>
     </div>
   </main>
 </Layout>
