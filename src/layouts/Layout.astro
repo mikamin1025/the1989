@@ -98,6 +98,7 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
       }
     }
     .overview {
+      display: none;
       position: fixed;
       width: 100vw;
       min-height: 100vh;
@@ -105,10 +106,10 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
       /* opacity: 0.9; */
       text-align: center;
       /* transform: translateX(100%); */
-      opacity: 0;
     }
     & .ov_action {
       /* transform: translateX(0%); */
+      display: block;
       opacity: 1;
       transition-duration:.3s;
     }
