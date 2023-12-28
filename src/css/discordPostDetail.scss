@@ -121,23 +121,27 @@ main {
       justify-content: space-between;
       width: 100%;
       height: 200px;
-      background-color: pink;
+      // background-color: pink;
 
       & .content__prev-Link {
         display: block;
         width: 45%;
         height: 80%;
-        background-color: skyblue;
+        // background-color: skyblue;
       }
       & .content__next-Link {
         display: block;
         width: 45%;
         height: 80%;
-        background-color: salmon;
+        // background-color: salmon;
 
         & img {
           width: 100%;
         }
+      }
+
+      & .content__relatedLink-title {
+        font-size: .5em;
       }
     }
   }

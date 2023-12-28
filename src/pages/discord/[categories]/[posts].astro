@@ -41,25 +41,42 @@ const post = await getDiscordPostDetail(posts as string);
       </div>
       <hr />
       <div class="content__textarea" set:html={post.content} />
-      <div class="content__relatedLinks">
-        <!-- <a class="content__prev-Link">
-          <p>関連記事(prev)</p>
-          {post.related_Links.prev_Link !== null && <a href="">hogehoge</a>}
-        </a>
-        <a class="content__next-Link" href={post.related_Links.next_Link.id}>
-          <p>関連記事(next)</p>
+
+      {
+post.related_Links.prev_Link.id !== "dummy" || post.related_Links.next_Link.id !=="dummy" && (
+<div class="content__relatedLinks">
+  
+        <a class="content__prev-Link" href={post.related_Links.prev_Link.id}>
           {
-            post.related_Links.next_Link !== null && (
+            post.related_Links.prev_Link.id !== "dummy" &&
+          (
+              <img
+                class="content__next-Link-thumbnail"
+                src={post.related_Links.prev_Link.thumbnail.url}
+                alt=""
+              />
+            <p class="content__relatedLink-title">{post.related_Links.next_Link.title}</p>
+            )
+          }
+        </a>
+
+        <a class="content__next-Link" href={post.related_Links.next_Link.id}>
+          {
+            post.related_Links.next_Link.id !== "dummy" &&
+             (
               <img
                 class="content__next-Link-thumbnail"
                 src={post.related_Links.next_Link.thumbnail.url}
                 alt=""
               />
-            <p>{post.related_Links.next_Link.title}</p>
+            <p class="content__relatedLink-title">{post.related_Links.next_Link.title}</p>
             )
           }
-        </a> -->
+        </a>
       </div>
+      )
+      }
+      
     </div>
   </main>
 </Layout>
