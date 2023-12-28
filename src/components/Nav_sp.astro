@@ -21,7 +21,7 @@ const { category_microcms, response, path } = Astro.props;
       category_microcms.contents.map((category: any) => (
         <li class="overview__category-list">
           <a href={path + category.id} class="overview__category-name">
-            {category.category}
+            {"§"+category.category}
           </a>
           {response.contents.map(
             (response: any) =>
