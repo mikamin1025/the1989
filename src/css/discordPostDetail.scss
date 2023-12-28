@@ -133,11 +133,10 @@ main {
         display: block;
         width: 45%;
         height: 80%;
-        // background-color: salmon;
-
-        & img {
-          width: 100%;
-        }
+        // background-color: salmon; 
+      }
+      & img {
+        width: 100%;
       }
 
       & .content__relatedLink-title {

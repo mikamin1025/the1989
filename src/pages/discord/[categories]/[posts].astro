@@ -42,41 +42,43 @@ const post = await getDiscordPostDetail(posts as string);
       <hr />
       <div class="content__textarea" set:html={post.content} />
 
-      {
-post.related_Links.prev_Link.id !== "dummy" || post.related_Links.next_Link.id !=="dummy" && (
-<div class="content__relatedLinks">
-  
+      <div class="content__relatedLinks">
         <a class="content__prev-Link" href={post.related_Links.prev_Link.id}>
           {
-            post.related_Links.prev_Link.id !== "dummy" &&
-          (
-              <img
-                class="content__next-Link-thumbnail"
-                src={post.related_Links.prev_Link.thumbnail.url}
-                alt=""
-              />
-            <p class="content__relatedLink-title">{post.related_Links.next_Link.title}</p>
+            post.related_Links.prev_Link.id !== "dummy" && (
+              <>
+              prev
+                <img
+                  class="content__prev-Link-thumbnail"
+                  src={post.related_Links.prev_Link.thumbnail.url}
+                  alt=""
+                />
+                <p class="content__relatedLink-title">
+                  {post.related_Links.prev_Link.title}
+                </p>
+              </>
             )
           }
         </a>
 
         <a class="content__next-Link" href={post.related_Links.next_Link.id}>
           {
-            post.related_Links.next_Link.id !== "dummy" &&
-             (
-              <img
-                class="content__next-Link-thumbnail"
-                src={post.related_Links.next_Link.thumbnail.url}
-                alt=""
-              />
-            <p class="content__relatedLink-title">{post.related_Links.next_Link.title}</p>
+            post.related_Links.next_Link.id !== "dummy" && (
+              <>
+              next
+                <img
+                  class="content__next-Link-thumbnail"
+                  src={post.related_Links.next_Link.thumbnail.url}
+                  alt=""
+                />
+                <p class="content__relatedLink-title">
+                  {post.related_Links.next_Link.title}
+                </p>
+              </>
             )
           }
         </a>
       </div>
-      )
-      }
-      
     </div>
   </main>
 </Layout>
