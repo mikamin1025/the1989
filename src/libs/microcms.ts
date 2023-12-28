@@ -8,7 +8,7 @@ const client = createClient({
 
 //API呼び出し（POST情報）
 export const getDiscordPosts = async(queries?: MicroCMSQueries) => {
-  return await client.get({ endpoint: "discord_post", queries: { orders: 'sortKey'}});
+  return await client.get({ endpoint: "discord_post", queries: { orders: 'sortKey', filters: 'id[not_equals]dummy' },});
 };
 //投稿記事の詳細を取得する
 export const getDiscordPostDetail = async (

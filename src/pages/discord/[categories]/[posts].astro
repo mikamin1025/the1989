@@ -42,7 +42,7 @@ const post = await getDiscordPostDetail(posts as string);
       <hr />
       <div class="content__textarea" set:html={post.content} />
       <div class="content__relatedLinks">
-        <a class="content__prev-Link">
+        <!-- <a class="content__prev-Link">
           <p>関連記事(prev)</p>
           {post.related_Links.prev_Link !== null && <a href="">hogehoge</a>}
         </a>
@@ -58,7 +58,7 @@ const post = await getDiscordPostDetail(posts as string);
             <p>{post.related_Links.next_Link.title}</p>
             )
           }
-        </a>
+        </a> -->
       </div>
     </div>
   </main>
