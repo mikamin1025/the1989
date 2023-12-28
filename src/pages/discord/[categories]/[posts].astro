@@ -46,7 +46,7 @@ const post = await getDiscordPostDetail(posts as string);
           <p>関連記事(prev)</p>
           {post.related_Links.prev_Link !== null && <a href="">hogehoge</a>}
         </a>
-        <a class="content__next-Link">
+        <a class="content__next-Link" href={post.related_Links.next_Link.id}>
           <p>関連記事(next)</p>
           {
             post.related_Links.next_Link !== null && (
@@ -55,6 +55,7 @@ const post = await getDiscordPostDetail(posts as string);
                 src={post.related_Links.next_Link.thumbnail.url}
                 alt=""
               />
+            <p>{post.related_Links.next_Link.title}</p>
             )
           }
         </a>
