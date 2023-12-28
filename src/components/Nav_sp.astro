@@ -1,33 +1,71 @@
 ---
 import "../css/discordlabo.scss";
-const { category_microcms, response, path} = Astro.props;
+const { category_microcms, response, path } = Astro.props;
 ---
+
 <aside class="contents-block">
   <ul class="contents-block__lists">
     {
-      path !== "../" ? <a href="../discord" class="overview__category-name">🚀ALL</a>
-      : <a href="../../discord" class="overview__category-name">🚀ALL</a>
+      path !== "../" ? (
+        <a href="../discord" class="overview__category-name">
+          🚀ALL
+        </a>
+      ) : (
+        <a href="../../discord" class="overview__category-name">
+          🚀ALL
+        </a>
+      )
     }
-    
+
     {
-       category_microcms.contents.map((category: any) => (
-          <li class="overview__category-list">
-            <a href={path + category.id} class="overview__category-name">
-              {category.category}
-            </a>
-            {response.contents.map(
-              (response: any) =>
-                response.category.id === category.id && (
-                  <a
-                    href={path + response.category.id + "/" + response.id}
-                    class="overview__posttitle"
-                  >
-                    {response.title}
-                  </a>
-                )
-            )}
-          </li>
-        ))
+      category_microcms.contents.map((category: any) => (
+        <li class="overview__category-list">
+          <a href={path + category.id} class="overview__category-name">
+            {category.category}
+          </a>
+          {response.contents.map(
+            (response: any) =>
+              response.category.id === category.id && (
+                <a
+                  href={path + response.category.id + "/" + response.id}
+                  class="overview__posttitle"
+                >
+                  {response.title}
+                </a>
+              )
+          )}
+        </li>
+      ))
     }
   </ul>
 </aside>
+<style>
+  a {
+    display: block;
+    color: #111;
+    font-size: 1.1em;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  & .contents-block__lists {
+    margin-top: 100px;
+
+    & .overview__category-list {
+      list-style: none;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    & .overview__category-name {
+    }
+    & .overview__posttitle {
+      display: block;
+      margin-top: 10px;
+      color: #111;
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: 400;
+    }
+  }
+</style>
