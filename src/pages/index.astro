@@ -7,11 +7,44 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="1989." Is_nav={false} ></Layout>
   <main>
     <div class="category-block">
-      <a href="discord" class="category-block__item">discord labo</a>
+      <div class="category-block__item">
+        <h2>discord labo</h2> 
+        <p>discordでコミュニティを作りたい人へ</p>
+        <p>ここはdiscordの機能の勉強をまとめています。</p>
+        <p>今後、各種機能の参考となる記事を投稿します。</p>
+      </div>
+      <a class="discordlink" href="discord">Entering the labo
+      </a>
     </div>
   </main>
 </Layout>
-
 <style>
+  .category-block {
+    width: 90%;
+    font-weight: 400;
+
+    & h2 {
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    & p {
+    font-size: .3em;
+    margin-bottom: 10px;
+    }
+
+    & .discordlink {
+      margin: 60px auto;
+      height: 50px;
+      width: 40%;
+      line-height: 50px;
+      padding-right: 30px;
+      padding-left: 30px;
+      border-radius: 10px;
+      background-image: linear-gradient(120deg, rgba(162, 87, 205, 1) -10%, rgba(197, 297, 257, 1));
+    }
+  }
+  }
+
+  
 </style>
 

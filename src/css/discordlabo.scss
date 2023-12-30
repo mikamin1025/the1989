@@ -159,15 +159,15 @@ main {
             margin-right: 20px;
             margin-left: 20px;
 
-            & .post__category {
-              display: inline-block;
-              font-size: 1em;
-              margin-bottom: 5px;
-              padding: 5px 10px;
-              background-color: #222;
-              color: #fff;
-              border-radius: 4px;
-            }
+            // & .post__category {
+            //   display: inline-block;
+            //   font-size: 1em;
+            //   margin-bottom: 5px;
+            //   padding: 5px 10px;
+            //   background-color: #222;
+            //   color: #fff;
+            //   border-radius: 4px;
+            // }
 
             & .post__title {
               font-size: 1.8em;
@@ -273,9 +273,17 @@ main {
 
                 & .post__updatetime {
                   font-size: .6em;
-                  margin-bottom: 15px;
+                  margin-bottom: 10px;
                   margin-right: 20px;
                 }
+              }
+              & .post__category {
+                font-size: .8em;
+                font-weight: 700;
+                display: inline-block;
+                background-color: #e0e0e0;
+                padding: 4px 8px;
+                border-radius: 10px;
               }
             }
           }

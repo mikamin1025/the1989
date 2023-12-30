@@ -33,6 +33,16 @@ main {
       margin-top: 30px;
     }
 
+    & .post__category {
+      font-size: .8em;
+      font-weight: 700;
+      display: inline-block;
+      background-color: #e0e0e0;
+      padding: 4px 8px;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
     & .content__textarea {
       margin-top: 40px;
       margin-bottom: 60px;
@@ -116,6 +126,12 @@ main {
         }
       }
     }
+
+    & .content__relatedLinks-area-title {
+      font-size: .8em;
+      margin-bottom: 10px;
+    }
+
     & .content__relatedLinks {
       display: flex;
       justify-content: space-between;
@@ -129,12 +145,14 @@ main {
         height: 80%;
         // background-color: skyblue;
       }
+
       & .content__next-Link {
         display: block;
         width: 45%;
         height: 80%;
         // background-color: salmon; 
       }
+
       & img {
         width: 100%;
       }
@@ -172,6 +190,7 @@ main {
         // font-weight: 400;
         margin-top: 10px;
       }
+
       & .content__time {
         display: flex;
         margin-top: 10px;
@@ -181,6 +200,7 @@ main {
           margin-right: 20px;
         }
       }
+
       & .content__textarea {
         margin-top: 40px;
 
@@ -205,7 +225,7 @@ main {
         & p {
           line-height: 1.7em;
           font-weight: 400;
-          font-size: 0.7em;
+          font-size: 0.8em;
           margin-top: 10px;
         }
 

@@ -39,9 +39,12 @@ const post = await getDiscordPostDetail(posts as string);
           更新日 {post.updatedAt.substring(0, 10)}
         </p>
       </div>
+      <p class="post__category">{post.category.category}</p>
       <hr />
       <div class="content__textarea" set:html={post.content} />
 
+      <hr>
+      <p class="content__relatedLinks-area-title">■ 関連記事</p>
       <div class="content__relatedLinks">
         <a class="content__prev-Link" href={post.related_Links.prev_Link.id}>
           {
