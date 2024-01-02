@@ -40,7 +40,7 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
     <header class="header">
       <h1 class="header-title">{title}</h1>
       {
-      Is_nav ===true && <nav class="header-nav"></nav>
+      Is_nav ===true && <nav class="header-nav"><i class="fa-solid fa-list"></i></nav>
       }
 
     </header>
@@ -97,11 +97,15 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
         right: 1em;
         width: 40px;
         height: 40px;
+        line-height: 40px;
         border: 1px solid #111;
         border-radius: 50%;
+        text-align: center;
+        font-size: 1.1em;
       }
       & .hn_action {
         background-color: #111;
+        color: #eee;
         transition-duration:.5s
       }
     }
