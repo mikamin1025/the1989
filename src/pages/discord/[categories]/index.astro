@@ -18,7 +18,7 @@ const { categories, categoryName } = Astro.params;
 //microCMSのカテゴリー情報を取得する
 const category_microcms = await getCategorys();
 //microCMSのPOST情報を取得する
-const response = await getDiscordPosts();
+const response = await getDiscordPosts({orders: 'sortKey', filters: 'id[not_equals]dummy'});
 ---
 
 <Layout

@@ -28,6 +28,8 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css"
     />
+    <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+
   </head>
   <body>
     <div class="overview">
@@ -45,6 +47,11 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
     <main>
       <slot />
     </main>
+    <footer>
+      <a href="search" class="search__icon">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </a>
+    </footer>
   </body>
 </html>
 <style is:global>
@@ -64,6 +71,7 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
     align-items: center;
     height: 80px;
     overflow-x: hidden;
+    border-bottom: 1px solid #999;
 
     & .header-title {
       display: block;
@@ -116,6 +124,24 @@ const { title, category_microcms, response, path, Is_nav } = Astro.props;
       transition-duration:.3s;
       overflow-y: scroll;
       /* z-index: 10; */
+    }
+
+    footer {
+      & .search__icon {
+        display: block;
+        position: fixed;
+        right: 25px;
+        bottom: 25px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid #999;
+        border-radius: 50%;
+        background-image: linear-gradient(120deg, rgba(162, 87, 205, 1) -10%, rgba(197, 297, 257, 1));
+        text-align: center;
+        font-size: 1.2em;
+        
+      }
     }
   }
 </style>

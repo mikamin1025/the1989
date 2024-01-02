@@ -9,6 +9,8 @@ export async function getStaticPaths() {
     params: {
       categories: post.category.id,
       posts: post.id,
+      orders: 'sortKey',
+      filters: 'id[not_equals]dummy'
     },
   }));
 }

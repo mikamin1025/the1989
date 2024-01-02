@@ -1,0 +1,12 @@
+---
+import BlogSearch from "../../components/ArticleSearch";
+import SearchButton from "../../components/SearchButton";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="1989." Is_nav={false}>
+  <main>
+    <SearchButton client:visible />
+    <BlogSearch client:only="preact" />
+  </main>
+</Layout>
