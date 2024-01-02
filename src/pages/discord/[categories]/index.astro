@@ -18,7 +18,10 @@ const { categories, categoryName } = Astro.params;
 //microCMSのカテゴリー情報を取得する
 const category_microcms = await getCategorys();
 //microCMSのPOST情報を取得する
-const response = await getDiscordPosts({orders: 'sortKey', filters: 'id[not_equals]dummy'});
+const response = await getDiscordPosts({
+  orders: "sortKey",
+  filters: "id[not_equals]dummy",
+});
 ---
 
 <Layout
@@ -40,12 +43,14 @@ const response = await getDiscordPosts({orders: 'sortKey', filters: 'id[not_equa
       />
       <!-- 投稿記事エリア -->
       <article class="discord-block">
-        <!-- <h2 class="discord-title">Discord Labo</h2> -->
+        <h2 class="discord-labotitle">
+          Discord Labo<i class="fa-brands fa-discord"></i>
+        </h2>
         {
           category_microcms.contents.map(
             (category: any) =>
               category.id === categories && (
-                <h2 class="discord__labocategory">{"§" + category.category}</p>
+                <h2 class="discord__labocategory">{"§" + category.category}</h2>
               )
           )
         }
@@ -63,14 +68,16 @@ const response = await getDiscordPosts({orders: 'sortKey', filters: 'id[not_equa
                       class="post-img"
                     />
                     <div class="post__detail">
-                      <h3 class="post__title">{detailPost.title}</h3>
-                      <div class="post__time">
-                        <p class="post__createtime">
-                          {detailPost.createdAt.substring(0, 10)} 作成
-                        </p>
-                        <p class="post__updatetime">
-                          {detailPost.updatedAt.substring(0, 10)} 更新
-                        </p>
+                      <div class="post__innerblock">
+                        <h3 class="post__title">{detailPost.title}</h3>
+                        <div class="post__time">
+                          <p class="post__createtime">
+                            {detailPost.createdAt.substring(0, 10)} 作成
+                          </p>
+                          <p class="post__updatetime">
+                            {detailPost.updatedAt.substring(0, 10)} 更新
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </a>
